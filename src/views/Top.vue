@@ -1,67 +1,43 @@
 <template>
   <div>
     <div id="mv">
-        <div id="mv-content">
-            <div id="icon">
-                <img src="../assets/images/icon.png" alt="アイコン">
-            </div>
-            <img src="../assets/images/copy.png" alt="食べるという、コミュニケーション" id="copy">
-            <h2 id="desc">「まち」の食育プロジェクト<br>EATOP</h2>
+      <div id="mv-content">
+        <div id="icon">
+          <img src="../assets/images/icon.png" alt="アイコン">
         </div>
+        <img src="../assets/images/copy.png" alt="食べるという、コミュニケーション" id="copy">
+        <h2 id="desc">「まち」の食育プロジェクト<br>EATOP</h2>
+      </div>
     </div>
-    <section id="about">
-      <h2>「食」というコミュニケーションを軸とした<br>「まち」対象の食育プロジェクト</h2>
-      <button @click="toAbout" class="btn">もっと詳しく</button>
-    </section>
-    <section id="event">
-      <h2>今後のイベント情報</h2>
-      <button @click="toEvent" class="btn">もっと詳しく</button>
-    </section>
-    <section id="logs">
-      <h2>活動実績</h2>
-      <button @click="toEvent" class="btn">もっと詳しく</button>
-    </section>
-
+    <div id="contents-container">
+      <topAbout/>
+      <topEvent/>
+      <topLogs/>
+    </div>
   </div>
 </template>
 
 <script>
+import topAbout from '@/components/topAbout'
+import topEvent from '@/components/topEvent'
+import topLogs from '@/components/topLogs'
+
 export default {
   name: 'top',
-  data () {
-    return {
-      title: 'TOP PAGE'
-    }
-  },
-  methods: {
-    toAbout () {
-      this.$router.push('about')
-    },
-    toEvent () {
-      this.$router.push('event')
-    },
-    toTrace () {
-      this.$router.push('trace')
-    }
+  components: {
+    topAbout: topAbout,
+    topEvent: topEvent,
+    topLogs: topLogs
   }
 }
 </script>
 
 <style scoped>
 * {
+  font-family: 'Nasu';
+  font-weight: normal;
   text-align: center;
-}
-
-.btn {
-  background-color: #987284;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  width: 251px;
-  height: 50px;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  font-size: 20px;
-  color: white;
+  margin: 0;
 }
 
 #mv {
@@ -85,8 +61,8 @@ export default {
     justify-content: space-around;
 }
 
-#icon {
-    object-fit: contain;
+#icon img {
+  height: 130px;
 }
 
 #copy {
@@ -96,10 +72,12 @@ export default {
 
 #desc {
     font-weight: normal;
+    margin: 20px 0;
+    color:  rgba(0, 0, 0, 0.692);
 }
 
-@media (max-width: 1200px) {
-
+topAbout topEvent topLogs {
+  height: 790px;
 }
 
 @media (min-width: 1400px) {
